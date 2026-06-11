@@ -1,13 +1,24 @@
 #!/bin/bash
 
-target="ALPX-3i-Paris"
-var="tasmin"
+target="ALPX-3i-Barcelona"
+var="tasmax"
+BASEDIR="I4C_CPRCM_CITY_DATA"
+
+# Test for cdo and cmip7repack
+if ! command -v cdo &> /dev/null; then
+  echo "cdo could not be found. Please install cdo to run this script."
+  exit 1
+fi
+if ! command -v cmip7repack &> /dev/null; then
+  echo "cmip7repack could not be found. Please install cmip7repack to run this script."
+  exit 1
+fi
 
 function dumpdates() {
   tr ' _.' '\n\n\n' | grep -E '^[0-9]{8}-[0-9]{8}$' | tr '-' '\n' | sort -u
 }
 
-ls ${target}/${var}_ALPX-3_*.nc \
+ls ${BASEDIR}/${target}/${var}_ALPX-3_*.nc \
   | cut -d_ -f-9 \
   | sort -u \
   | while read -r file; do
