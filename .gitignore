@@ -1,3 +1,8 @@
+I4C_CPRCM_DATA
+I4C_CPRCM_CITY_DATA
+I4C_EMULATOR_CITY_DATA
+*.grid
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
