@@ -1,8 +1,9 @@
 #!/bin/bash
 
-target="ALPX-3i-Barcelona"
-var="tasmax"
-BASEDIR="I4C_CPRCM_CITY_DATA"
+target="ALPX-3i-Paris"
+var="pr"
+#BASEDIR="I4C_CPRCM_CITY_DATA"
+BASEDIR="I4C_EMULATOR_CITY_DATA"
 
 # Test for cdo and cmip7repack
 if ! command -v cdo &> /dev/null; then
@@ -19,7 +20,7 @@ function dumpdates() {
 }
 
 ls ${BASEDIR}/${target}/${var}_ALPX-3_*.nc \
-  | cut -d_ -f-9 \
+  | sed -e s/_[0-9]*-.*\.nc// \
   | sort -u \
   | while read -r file; do
       mergefiles=$(ls ${file}_*.nc)
