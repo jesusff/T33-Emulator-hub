@@ -1,7 +1,7 @@
 #!/bin/bash
 
-target="ALPX-3i-Paris"
-var="pr"
+target="ALPX-3i-Barcelona"
+var="tasmin"
 #BASEDIR="I4C_CPRCM_CITY_DATA"
 BASEDIR="I4C_EMULATOR_CITY_DATA"
 

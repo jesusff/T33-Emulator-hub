@@ -1,7 +1,7 @@
 #!/bin/bash
 
-target="ALPX-3i-Paris"
-variable="pr"
+target="ALPX-3i-Barcelona"
+variable="tasmin"
 
 emulator=true
 cprcm=false
