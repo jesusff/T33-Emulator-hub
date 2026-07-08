@@ -5,6 +5,9 @@ I4C_EMULATOR_DATA
 I4C_CPRCM_CITY_DATA
 I4C_EMULATOR_CITY_DATA
 *.grid
+.codex
+.pixi
+.agents
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

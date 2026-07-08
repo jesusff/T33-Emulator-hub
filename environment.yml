@@ -9,6 +9,7 @@ dependencies:
   - wget
   - python>=3.10
   - ipykernel
+  - papermill
   - jupyterlab
   - notebook
   - matplotlib
