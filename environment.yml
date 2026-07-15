@@ -1,0 +1,22 @@
+name: t33-emulator-hub
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - cdo
+  - cmip7-repack
+  - parallel
+  - wget
+  - python>=3.10
+  - ipykernel
+  - papermill
+  - jupyterlab
+  - notebook
+  - matplotlib
+  - numpy
+  - pandas
+  - xarray
+  - bottleneck
+  - dask
+  - h5netcdf
+  - netcdf4
