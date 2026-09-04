@@ -132,6 +132,19 @@ def winter_mean_precipitation(series, config, winter_months=(12, 1, 2)):
     result.attrs["title"] = "Winter mean precipitation"
     return result
 
+def summer_mean(series, config, summer_months=(6, 7, 8)):
+    summer_series = series.sel(time=series.time.dt.month.isin(summer_months))
+    year = summer_series.time.dt.year
+    summer_series = summer_series.assign_coords(year=("time", year.data))
+    result = summer_series.groupby("year").mean(dim="time", skipna=True)
+    result = result.assign_coords(year=result.year.astype(int))
+    result.name = "summer_mean"
+    location_name = series.attrs.get("location_name", config["CITY"])
+    result.attrs["long_name"] = f"Summer mean at {location_name}"
+    result.attrs["units"] = series.attrs.get("units", "")
+    result.attrs["summer_months"] = ",".join(str(month) for month in summer_months)
+    result.attrs["title"] = "Summer mean"
+    return result
 
 def yearly_no_min_above_20(series, config, threshold=20):
     annual_counts = []
@@ -173,6 +186,7 @@ METRIC_FUNCTIONS = {
     "tx15day": yearly_max_15day_mean,
     "tn20": yearly_no_min_above_20,
     "djfmean": winter_mean_precipitation,
+    "jjamean": summer_mean,
     "rx1day": yearly_max_1day_precipitation,
 }
 
